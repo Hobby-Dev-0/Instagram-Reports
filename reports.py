@@ -6,13 +6,13 @@ try :
   import pyfiglet
 except ImportError:
   os.system ("pip install pyfiglet")
-  
+
 try :
-  
+
   import requests
 
 except ImportError:
-  
+
   os.system ("pip install requests")
 os.system ("clear")
 rs = requests.session()
@@ -30,8 +30,8 @@ print('''
 Coded By : Ayanokoji Kiyotaka
 ________________________________________
 ''')
-print(Y+"Log in to your Instagram account:")
-print("")     
+print(f"{Y}Log in to your Instagram account:")
+print("")
 username = input("your username :")
 password = input("your password :")
 Target = input("Target Id (username) :")
@@ -60,27 +60,27 @@ data = {
          'enc_password': f'#PWD_INSTAGRAM_BROWSER:0:1589682409:{password}',
          'queryParams': '{}',
          'optIntoOneTap': 'false'
-    }    
+    }
 r = rs.post(url, headers=headers, data=data)
-if  'authenticated":true' in r.text or 'userId' in r.text:
-    rs.headers.update({'X-CSRFToken': r.cookies['csrftoken']})
+if 'authenticated":true' in r.text or 'userId' in r.text:
+  rs.headers.update({'X-CSRFToken': r.cookies['csrftoken']})
+  print("")
+  print ("\033[92m Login Successful ✓")
+  print ("")
+  os.system ("xdg-open https://www.facebook.com/darkhunter141/")
+  print(G+"*"*25)
+  print("")
+  print(f"{G}Login :{username}")
+  try:
+    u = rs.get(f"https://www.instagram.com/{Target}/?__a=1")
+    id =  str(u.json()["graphql"]["user"]["id"])
+    print(f"{G}Target : " + f"{Target} : {id}")
     print("")
-    print ("\033[92m Login Successful ✓")
-    print ("")
-    os.system ("xdg-open https://www.facebook.com/darkhunter141/")
-    print(G+"*"*25)	
-    print("")
-    print(G+"Login :"+username)
-    try:
-        u = rs.get(f"https://www.instagram.com/{Target}/?__a=1")
-        id =  str(u.json()["graphql"]["user"]["id"])
-        print(G+"Target : "+f"{Target} : {id}")
-        print("")
-        print(G+"*"*25)
-    except:
-    	print(R+"[!]Check the victim's account")
-    	exit()
-    print(R+"""
+    print(G+"*"*25)
+  except:
+  	print(R+"[!]Check the victim's account")
+  	exit()
+  print(R+"""
 Choose the type of report :	
 [1] - spam
 [2] - violence
@@ -91,109 +91,109 @@ Choose the type of report :
 [7] - Hate on
 
     """)
-    xx = int(input("Enter the report number :"))
-    print('_'*30)
-    print("")
-    if xx == 1:
-    	P1= int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_1 in range(P1):
-    		url_1=f'https://www.instagram.com/users/{id}/report/'
-    		data_1={'source_name':'','reason_id':'1','frx_context':''}
-    		report_1=rs.post(url_1,data=data_1)
-    		if '"status":"ok"' in report_1.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)
-    		
-    elif xx == 2:
-    	P2 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait (sec ):"))
-    	print('-'*30)
-    	for i_2 in range(P2):
-    		url_2=f'https://www.instagram.com/users/{id}/report/'
-    		data_2={'source_name':'','reason_id':'5','frx_context':''}
-    		report_2=rs.post(url_2,data=data_2)
-    		if '"status":"ok"' in report_2.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)
-    elif xx == 3:
-    	P3 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_3 in range(P3):
-    		url_3=f'https://www.instagram.com/users/{id}/report/'
-    		data_3={'source_name':'','reason_id':'8','frx_context':''}
-    		report_3=rs.post(url_3,data=data_3)
-    		if '"status":"ok"' in report_3.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)
-    elif xx == 4:
-    	P4 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_4 in range(P4):
-    		url_4=f'https://www.instagram.com/users/{id}/report/'
-    		data_4={'source_name':'','reason_id':'4','frx_context':''}
-    		report_4=rs.post(url_4,data=data_4)
-    		if '"status":"ok"' in report_4.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)	
-    elif xx == 5:
-    	P5 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_5 in range(P5):
-    		url_5=f'https://www.instagram.com/users/{id}/report/'
-    		data_5={'source_name':'','reason_id':'7','frx_context':''}
-    		report_5=rs.post(url_5,data=data_5)
-    		if '"status":"ok"' in report_5.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)    		
-    elif xx == 6:
-    	P6 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_6 in range(P6):
-    		url_6=f'https://www.instagram.com/users/{id}/report/'
-    		data_6={'source_name':'','reason_id':'2','frx_context':''}
-    		report_6=rs.post(url_6,data=data_6)
-    		if '"status":"ok"' in report_6.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)
-    elif xx == 7:
-    	P7 = int(input(Y+"How many reports :"))
-    	tu = int(input("time wait :"))
-    	print('-'*30)
-    	for i_7 in range(P7):
-    		url_7=f'https://www.instagram.com/users/{id}/report/'
-    		data_7={'source_name':'','reason_id':'6','frx_context':''}
-    		report_7=rs.post(url_7,data=data_7)
-    		if '"status":"ok"' in report_7.text:
-    			nu += 1
-    		else:
-    			n += 1
-    		print(G+f"\rSent = {nu}  {R}Error ={n}",end="")
-    		time.sleep(tu)		
+  xx = int(input("Enter the report number :"))
+  print('_'*30)
+  print("")
+  if xx == 1:
+    P1 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P1):
+      url_1=f'https://www.instagram.com/users/{id}/report/'
+      data_1={'source_name':'','reason_id':'1','frx_context':''}
+      report_1=rs.post(url_1,data=data_1)
+      if '"status":"ok"' in report_1.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+
+  elif xx == 2:
+    P2 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait (sec ):"))
+    print('-'*30)
+    for _ in range(P2):
+      url_2=f'https://www.instagram.com/users/{id}/report/'
+      data_2={'source_name':'','reason_id':'5','frx_context':''}
+      report_2=rs.post(url_2,data=data_2)
+      if '"status":"ok"' in report_2.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+  elif xx == 3:
+    P3 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P3):
+      url_3=f'https://www.instagram.com/users/{id}/report/'
+      data_3={'source_name':'','reason_id':'8','frx_context':''}
+      report_3=rs.post(url_3,data=data_3)
+      if '"status":"ok"' in report_3.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+  elif xx == 4:
+    P4 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P4):
+      url_4=f'https://www.instagram.com/users/{id}/report/'
+      data_4={'source_name':'','reason_id':'4','frx_context':''}
+      report_4=rs.post(url_4,data=data_4)
+      if '"status":"ok"' in report_4.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+  elif xx == 5:
+    P5 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P5):
+      url_5=f'https://www.instagram.com/users/{id}/report/'
+      data_5={'source_name':'','reason_id':'7','frx_context':''}
+      report_5=rs.post(url_5,data=data_5)
+      if '"status":"ok"' in report_5.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+  elif xx == 6:
+    P6 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P6):
+      url_6=f'https://www.instagram.com/users/{id}/report/'
+      data_6={'source_name':'','reason_id':'2','frx_context':''}
+      report_6=rs.post(url_6,data=data_6)
+      if '"status":"ok"' in report_6.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
+  elif xx == 7:
+    P7 = int(input(f"{Y}How many reports :"))
+    tu = int(input("time wait :"))
+    print('-'*30)
+    for _ in range(P7):
+      url_7=f'https://www.instagram.com/users/{id}/report/'
+      data_7={'source_name':'','reason_id':'6','frx_context':''}
+      report_7=rs.post(url_7,data=data_7)
+      if '"status":"ok"' in report_7.text:
+      	nu += 1
+      else:
+      	n += 1
+      print(f"{G}\rSent = {nu}  {R}Error ={n}", end="")
+      time.sleep(tu)
 elif ('{"message":"checkpoint_required"') in r.text:
-	print(R+"[!]checkpoint")
+  print(f"{R}[!]checkpoint")
 else:
-	print(R+"Error, Try again")
+  print(f"{R}Error, Try again")
